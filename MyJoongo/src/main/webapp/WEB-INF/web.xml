@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>joongo</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+
+			<param-value>classpath:/config/bean*.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:/config/beans.xml</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
+	<servlet-mapping>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>Login</filter-name>
+		<filter-class>filter.Login</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>Login</filter-name>
+		<url-pattern>/writeProductForm.do</url-pattern>
+		<url-pattern>/writeProduct.do</url-pattern>
+		<url-pattern>/logout.do</url-pattern>
+		<url-pattern>/introduceModify.do</url-pattern>
+		<url-pattern>/deleteUser.do</url-pattern>
+		<url-pattern>/modifyUserForm.do</url-pattern>
+		<url-pattern>/modifyUser.do</url-pattern>
+		<url-pattern>/addFavorite.do</url-pattern>
+		<url-pattern>/deleteFavorite.do</url-pattern>
+		<url-pattern>/productModifyForm.do</url-pattern>
+		<url-pattern>/productModify.do</url-pattern>
+		<url-pattern>/delectProduct.do</url-pattern>
+		<url-pattern>/addFavorite.do</url-pattern>
+		<url-pattern>/deleteFavorite.do</url-pattern>
+		
+	</filter-mapping>
+</web-app>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Favorite.DAO.FavoriteMapper">
+	<insert id="insertFavorite" parameterType="Favorite">
+		insert into favorite(userNo, proNo) values(#{userNo}, #{proNo})
+	</insert>
+	
+	<select id="selectFavoriteListByUser" parameterType="int" resultType="Favorite">
+		select * from favorite where userNo = #{userNo}
+	</select>
+
+	<select id="selectFavorite" resultType="Favorite" parameterType="int">
+		select * from favorite where proNo=#{proNo} and userNo=#{userNo} order by favoNo desc limit 1
+	</select>
+
+	<delete id="deleteFavorite" parameterType="int">
+		delete from favorite where favoNo = #{favoNo}
+	</delete>
+</mapper>
+
+ 
